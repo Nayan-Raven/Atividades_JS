@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas 2</title>
+    <style>
+        body{
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="meuCanvas" width="637" height="637"></canvas>
+    <script>
+        let canvas = document.getElementById("meuCanvas");
+        let ctx = canvas.getContext("2d");
+        let x = canvas.width / 2;
+        let y = canvas.height / 2;
+        let raio = 50;
+        let velX = 4;
+        let velY = 5;
+
+function circulo(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //define a cor de preenchimento do retangulo
+    ctx.fillStyle = "white";
+    ctx.beginPath();
+    ctx.arc(x, y, raio, 0, Math.PI * 2);
+    //preenche o interior do circulo
+    ctx.fill();
+    //andando na tela
+    x += velX;
+    y += velY;
+    //inverter direçao
+    if (x + raio > canvas.width || x - raio < 0){
+        velX =- velX
+    }
+    if (y + raio > canvas.width || y - raio < 0){
+        velY =- velY
+    }
+    requestAnimationFrame(circulo);
+}   //fim função
+circulo();     
+    </script>
+</body>
+</html>

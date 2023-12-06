@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1_LS_G5</title>
+</head>
+<body>
+    <!------------------------------HTML---------------------------------->
+    <h1>Restaurante</h1>
+    <label>Digite o valor do kg: </label><input type="number" id="peso"><br><br>
+    <label>Digite o peso do prato: </label><input type="number" id="prat"> <br><br>
+
+    <button onclick="veri()">Calcular Preço</button>
+   
+    <p id="pro"></p>
+
+    <!-------------------------------JS------------------------------------->
+    <script>
+function obter(){
+    return JSON.parse(localStorage.getItem('restaurante')) || [];
+}
+function salvarDadosRestaurante(lista){
+    localStorage.setItem('restaurante',JSON.stringify(lista));
+}
+let listaRestaurante = obter();
+
+    function obterListaProdutos(){
+        return JSON.parse(localStorage.getItem('produtos')) || [];
+    }
+    function salvarLista(lista){
+        localStorage.setItem('produtos',JSON.stringify(lista));
+    }        
+    let listaProdutos = obterListaProdutos();
+
+    function adicionaProduto() {
+        const pesoKg = document.getElementById("peso").value;
+        const preçoPrato = parseFloat(document.getElementById("prat").value);
+        if(pesoKg && preçoPrato) {
+            listaProdutos.push({pesoKg,preçoPrato});
+        }
+    }
+
+        function veri(){
+        let pesoKg = document.getElementById("peso").value;
+        let preçoPrato = document.getElementById("prat").value;
+        
+        let pre = pesoKg * preçoPrato;
+        let para = document.createElement("p");
+        let node = document.createTextNode("o preço final é: "+ pre +" reais");
+        para.appendChild(node);
+        let element = document.getElementById("pro");
+        element.appendChild(para);
+
+        }
+
+         //lendo a lista
+    let vazia = "";
+    for (i = 0; i < listaRestaurante.length; i++){
+        vazia += "pesoKg:  " + listaRestaurante[i].preçoprato  +
+        "preço prato: " + listaRestaurante[i].pesoKg +
+         "preço final: " + listaRestaurante[i].pre +"<br>";
+    }
+    document.getElementById ("demo").innerHTML = vazia;
+
+    </script>
+</body>
+</html>

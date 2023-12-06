@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WAI ARIA</title>
+</head>
+<body>
+<label for="produtos">Selecione a dificuldade:</label>
+<select id="produtos" aria-label="selecione um produto">
+    <option value="1">Easy</option>
+    <option value="2">Medium</option>
+    <option value="3">Hard</option>
+</select>
+
+
+<style>
+    #menuButton[aria-expanded="true"] ::after{
+        content: " +";  
+    }
+    #menuButton[aria-expanded="false"] ::after{
+        content: " -";
+    }  
+    #menu[aria-hidden="true"]{
+        display: none;
+    }
+    #menu[aria-hidden="false"]{
+        display: block;
+    }
+</style>
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menu = document.getElementById("menu");
+    menuButton.addEventListener("charge", () => {
+        const expand = menuButton.getAttribute("aria-expanded") === "true" ;
+        menuButton.setAttribute("aria-expanded", !expand);
+        menu.setAttribute("aria-hidden", expand);
+
+    })
+</script>
+
+<script>
+var select = document.querySelector('select');
+select.addEventListener('change', function() {
+  var option = this.selectedOptions[0];
+  var texto = option.textContent;
+
+  console.log(texto);
+});
+</script>
+</body>
+</html>

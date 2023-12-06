@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exer7</title>
+</head>
+<body>
+<script>
+    function inverter(){
+        var inverter = document.getElementsByName("txt");
+        valor = inverter.item(0).value.toString().split("");
+        normal = valor.reverse().join("");
+        document.body.innerHTML += normal + "<br />";
+    }
+</script>
+
+<h1>Inverter a palavra</h1>
+<form>
+<input type="text" name="txt" value="" />
+<input type="button" id="btn" value="Inverter" onclick="inverter()" />
+</form>
+
+    <!--  
+    <input type="submit" value="Inverter Palavra" onclick="alerta()">
+
+    <script src = "JS/exer7.js"></script>-->
+</body>
+</html>

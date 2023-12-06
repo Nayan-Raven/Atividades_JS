@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex1_G5</title>
+</head>
+<body>
+    <!------------------------------HTML---------------------------------->
+    <h1>Restaurante</h1>
+    <label>Digite o valor do kg: </label><input type="number" id="peso"><br><br>
+    <label>Digite o peso do prato: </label><input type="number" id="prat"> <br><br>
+
+    <button onclick="veri()">Calcular Preço</button>
+   
+    <p id="pro"></p>
+
+    <!-------------------------------JS------------------------------------->
+    <script>
+        function veri(){
+        let pesoKg = document.getElementById("peso").value;
+        let preçoPrato = document.getElementById("prat").value;
+        
+        let pre = pesoKg * preçoPrato;
+        let para = document.createElement("p");
+        let node = document.createTextNode("o preço final é: "+ pre +" reais");
+        para.appendChild(node);
+        let element = document.getElementById("pro");
+        element.appendChild(para);
+
+        }
+
+    </script>
+</body>
+</html>

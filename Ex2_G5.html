@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ex2_G5</title>
+    <link rel="stylesheet" href="CSS/exer8.css">
+</head>
+<body>
+    <!------------------------------HTML---------------------------------->
+<div class="div">
+    <h2>Sistema de Criptografia</h2>
+    <div>
+    <p>Palavra:<input type="text" id="texto-entrada" class="input"></p>
+    <br>
+    <button onclick="encriptar()" class="botao1">Criptografar</button> 
+    <img src="IMG/verdeE.png"> <img src="IMG/vermelho.png"> 
+    <button  onclick="descriptografar()" class="botao2" class="textarea"">Descriptografar</button>
+    <br><br>
+    </div>
+    <textarea id="texto-saida" cols="30" rows="10" class="textarea"></textarea> 
+             
+</div>
+    <!-------------------------------JS------------------------------------->
+    <script>
+        var inputText = document.querySelector("#texto-entrada");
+inputText.focus()
+var outputText = document.querySelector("#texto-saida");
+
+function encriptar() {
+  
+  var texto = inputText.value.toLowerCase();
+  
+  var textoCriptografado = texto
+  .replace(/e/g,"00110")
+  .replace(/i/g,"01010")
+  .replace(/a/g,"00001")
+  .replace(/o/g,"10010")
+  .replace(/n/g,"10000")
+  .replace(/y/g,"11100")
+  .replace(/s/g,"10100")
+  .replace(/m/g,"01111")
+  .replace(/p/g,"10011")
+  .replace(/t/g,"10111")
+  .replace(/d/g,"00101")
+  .replace(/u/g,"01110");
+
+  outputText.value = textoCriptografado;
+}
+function descriptografar() {
+
+  var texto = inputText.value.toLowerCase();
+
+  var textoDescriptografado = texto
+  .replace(/00110/g,"e")
+  .replace(/01010/g,"i")
+  .replace(/00001/g,"a")
+  .replace(/10010/g,"o")
+  .replace(/10000/g,"n")
+  .replace(/11100/g,"y")
+  .replace(/10100/g,"s")
+  .replace(/01111/g,"m")
+  .replace(/10011/g,"p")
+  .replace(/10111/g,"t")
+  .replace(/00101/g,"d")
+  .replace(/01110/g,"u")
+
+  outputText.value = textoDescriptografado
+}
+
+    </script>
+</body>
+</html>
